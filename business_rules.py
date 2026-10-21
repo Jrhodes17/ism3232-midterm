@@ -37,6 +37,14 @@ def gets_trainer(seats: int, total: float) -> bool:
     """Returns Ture when the order gets a dedicated trainer, otherwise False"""
     return seats > 50 or total > 400.0
 
+def total_licensed(orders: list) ->float:
+    """Returns the sum of the license totals for every order in the list"""
+    sum-total = 0.0
+    for order in orders:
+        company, seat_price, seats, education = order
+        sum_total += calculate_license_total(seat_price, seats, education)
+    return sum_total
+
 def largest_license( orders: list) -> str:
     """Returns the company of the order with the largest license total"""
     if not orders:
