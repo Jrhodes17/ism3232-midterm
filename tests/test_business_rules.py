@@ -17,8 +17,8 @@ def test_claculate_license_total_basic():
 
 def test_calculate_license_total_education_flag():
     """test that passing education = true changes the calculation answers"""
-    standard_result = calculate_license_total(seat_price=40.0, seats=10, education=False)
-    edu_result = calculate_license_total(seat_price=40.0, seats=10, education=True)
+    standard_result = calculate_license_total(seat_price=40.0, seats=50, education=False)
+    edu_result = calculate_license_total(seat_price=40.0, seats=50, education=True)
     assert round(edu_result, 2) != round(standard_result, 2)
 
 def test_tier_one_limit_below():
