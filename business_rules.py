@@ -10,10 +10,10 @@ def get_seat_discount(seats: int, education: bool = False) -> float:
         return 0.0
     else:
         if seats < 50:
-            discount: 0.07
+            discount = 0.07
         else: 
             if education:
-                discount: 0.16
+                discount = 0.16
             else:
                 discount = 0.07
         return discount
@@ -39,10 +39,9 @@ def gets_trainer(seats: int, total: float) -> bool:
 
 def total_licensed(orders: list) ->float:
     """Returns the sum of the license totals for every order in the list"""
-    sum-total = 0.0
+    sum_total = 0.0
     for order in orders:
-        company, seat_price, seats, education = order
-        sum_total += calculate_license_total(seat_price, seats, education)
+        sum_total += calculate_license_total(order["seat_price"], order["seats"], order["education"])
     return sum_total
 
 def largest_license( orders: list) -> str:
@@ -54,12 +53,17 @@ def largest_license( orders: list) -> str:
     max_total = -1.0
 
     for order in orders:
-        company, seat_price, seats, education = order
-        current_total = calculate_license_total(seat_price, seats, education)
-
-        if current_total > max_total:
-            max_total = current_total
-            largest_company = company
+        company = order["company"]
+        seat_price = order["seat_price"]
+        seats = order["seats"]
+        education = order["education"]
+        
+        total = calculate_license_total(seat_price, seats, education)
+        if total > max_total:
+            max_total = total
+            max_company = company
+            
+    return max_company
 
     return largest_company
 
